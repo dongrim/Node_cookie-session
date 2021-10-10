@@ -1,0 +1,10 @@
+<button onclick='handleClearCookie("<%= res %>")'>Delete cookies1</button>
+<button onclick='"<%= res.clearCookie(`zz`) %>"'>Delete cookies2</button>
+<button onclick="handleClearCookie()">Delete cookies3</button>
+<script>
+  function handleClearCookie(res) {
+    console.log("start");
+    console.log(res);
+    // baz.clearCookie("foo");
+  }
+</script>
