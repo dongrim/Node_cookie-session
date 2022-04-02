@@ -7,6 +7,7 @@ router.get('/', (req, res) => {
   });
   res.cookie('baz', 'none');
   console.log(req.headers.cookie);
+  console.log(req.cookies);
   // res.clearCookie("foo");
   res.render('index-cookie', { res });
 });
@@ -23,7 +24,8 @@ router.get('/root', (req, res) => {
       `Domain_cookie=localhost; Domain=localhost`,
     ],
   });
-  console.log(req.headers.cooki);
+  console.log(req.headers.cookie);
+  console.log(req.cookies);
   res.end('Request has been done.');
 });
 

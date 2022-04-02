@@ -6,7 +6,6 @@
 
 ```
 yarn add express-session
-
 ```
 
 2. Usage
@@ -40,25 +39,30 @@ console.log(req.session.name); // Bob
 
 ## Set cookies
 
-1. Module isn't required
-2. Usage
+1. Usage
 
 ```js
+// Method-1
 res.cookie('name', 'Tom', {
   maxAge: 365 * 24 * 60 * 60 * 1000,
   httpOnly: true,
 });
-
 res.cookie('foo', '123');
 
+// Method-2
 res.writeHead(200, {
   'Set-Cookie': 'name=gildong',
 });
+res.setHeader('Set-Cookie', ['name=gildong; HttpOnly']);
 
-console.log(req.headers.cookie);
+// Output-1
+console.log(req.headers.cookie); // type of output: string
+
+// Output-2, require "cookie-parser"
+console.log(req.cookies); // type of output: object[]
 ```
 
-3. On browser side
+2. On browser side
 
 | Name | value   | Expires / Max-Age        |
 | ---- | ------- | ------------------------ |
@@ -69,4 +73,6 @@ console.log(req.headers.cookie);
 ## Dependencies
 
 - `express-session`
-- ~~cookie-parser~~ : deprecated
+- `req.cookies: cookie-parser`
+- `req.body:` app.use(express.json());
+- `form data:` app.use(express.urlencoded({ extended: true }));
